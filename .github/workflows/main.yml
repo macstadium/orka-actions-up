@@ -12,3 +12,13 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+    outputs:
+      random-number: ${{ steps.foo.outputs.random-number }}
+        
+  second_job:
+    needs: hello_world_job
+    runs-on: ubuntu-latest
+    name: A second job
+    steps:
+      - id: bar
+      - run: echo ${{ needs.hello_world_job.outputs.random-number }}
