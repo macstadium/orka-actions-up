@@ -16,11 +16,11 @@ jobs:
       random-number: ${{ steps.foo.outputs.random-number }}
       
       
-  random:
-    runs-on: ubuntu-latest
-    name: random number
-    steps:
-      - uses: actions/checkout@v2
-      - id: bar
-      - run: echo ${{ needs.hello_world_job.outputs.random-number }}
+    random:
+      runs-on: ubuntu-latest
+      name: random number
+      steps:
+        - uses: actions/checkout@v2
+        - id: bar
+        - run: echo ${{ needs.hello_world_job.outputs.random-number }}
       
