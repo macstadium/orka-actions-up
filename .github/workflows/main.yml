@@ -21,6 +21,7 @@ jobs:
     name: A second job
     steps:
       - id: bar
-      - run: echo ${{ needs.hello_world_job.outputs.random-number }}
+#       - run: echo ${{ needs.hello_world_job.outputs.random-number }}
+
       
       
