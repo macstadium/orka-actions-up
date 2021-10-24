@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: job1
     steps:
+      - uses: actions/checkout@V2
       - id: foo
       - run: echo $RANDOM
         shell: bash
