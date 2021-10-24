@@ -6,17 +6,17 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: job1
     steps:
       - id: foo
-      - run: echo random-number $RANDOM
+      - run: echo $RANDOM
         shell: bash
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    name: random number
+    name: job2
     steps:
       - id: bar
-      - run: echo random-number $RANDOM
+      - run: echo $RANDOM
         shell: bash
       
