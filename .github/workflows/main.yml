@@ -15,7 +15,7 @@ jobs:
     outputs:
       random-number: ${{ steps.foo.outputs.random-number }}
   random:
-    needs: [hello_world_job]
+    needs: hello_world_job
     runs-on: ubuntu-latest
     name: random number
     steps:
