@@ -14,6 +14,8 @@ jobs:
         shell: bash
     outputs:
       random-number: ${{ steps.foo.outputs.random-number }}
+      
+      
   random:
     runs-on: ubuntu-latest
     name: random number
