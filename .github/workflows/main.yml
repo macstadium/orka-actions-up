@@ -6,18 +6,19 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    name: job1
     steps:
-      - uses: actions/checkout@V2
-      - id: foo
-      - run: echo $RANDOM
-        shell: bash
+    - name: Job 1
+      id: job1
+      uses: jeff-vincent/example-composite-action@main
+    outputs:
+      random-number: ${{ steps.job1.outputs.random-number }}
+        
+        
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    name: job2
     steps:
-      - id: bar
-      - run: echo $RANDOM
-        shell: bash
-      
+    - name: Job 2
+      id: job2
+      run: |
+        echo "${{ needs.job1.outputs.random-number }}"
