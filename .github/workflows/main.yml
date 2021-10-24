@@ -11,9 +11,6 @@ jobs:
       - id: foo
       - run: echo random-number $RANDOM
         shell: bash
-
-      
-      
   job2:
     needs: job1
     runs-on: ubuntu-latest
