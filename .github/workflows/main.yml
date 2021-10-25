@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/example-composite-action@main
+      uses: jeff-vincent/example-composite-action@test
     outputs:
       random-number: ${{ steps.job1.outputs.random-number }}
         
