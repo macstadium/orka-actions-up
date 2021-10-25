@@ -10,7 +10,7 @@ runs:
     - id: runner-up
       run: |
         ${{ github.action_path }}/run.sh
-        export VM_NAME=$RANDOM
+        export VM_NAME=$(openssl rand -base64 32)
         echo "::set-output name=vm-name::$(echo $VM_NAME)"
         python3 ${{ github.action_path }}/main.py
       shell: bash
