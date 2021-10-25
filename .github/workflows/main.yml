@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   job1:
@@ -9,9 +9,9 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/example-composite-action@main
+      uses: jeff-vincent/example-composite-action@dev
     outputs:
-      random-number: ${{ steps.job1.outputs.random-number }}
+      vm-name: ${{ steps.job1.outputs.vm-name }}
         
         
   job2:
@@ -21,4 +21,4 @@ jobs:
     - name: Job 2
       id: job2
       run: |
-        echo "${{ needs.job1.outputs.random-number }}"
+        echo "${{ needs.job1.outputs.vm-name }}"

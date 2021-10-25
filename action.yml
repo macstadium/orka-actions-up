@@ -1,21 +1,16 @@
-name: 'Hello World'
-description: 'Greet someone'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+name: 'orka-actions-up'
+description: 'spin up an orka actions runner'
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
+  vm-name:
+    description: "VM name"
+    value: ${{ steps.runner-up.outputs.vm-name }}
 runs:
   using: "composite"
   steps:
-    - id: random-number-generator
+    - id: runner-up
       run: |
-        ${{ github.action_path }}/goodbye.sh
+        ${{ github.action_path }}/run.sh
         export VM_NAME=$RANDOM
-        echo "::set-output name=random-id::$(echo $VM_NAME)"
+        echo "::set-output name=vm-name::$(echo $VM_NAME)"
         python3 ${{ github.action_path }}/main.py
       shell: bash
