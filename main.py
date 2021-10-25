@@ -1,3 +1,3 @@
 import os
 
-print(os.environ["VM_NAME"]
+print(os.environ["VM_NAME"])
