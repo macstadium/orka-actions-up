@@ -10,7 +10,7 @@ runs:
     - id: runner-up
       run: |
         ${{ github.action_path }}/run.sh
-        export VM_NAME=$RANDOM
+        export VM_NAME=$(echo $RANDOM | md5sum | head -c 20; echo;)
         echo "::set-output name=vm-name::$(echo $VM_NAME)"
         python3 ${{ github.action_path }}/main.py
       shell: bash
