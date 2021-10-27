@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/example-composite-action@dev
+      uses: jeff-vincent/example-composite-action@main
     outputs:
       vm-name: ${{ steps.job1.outputs.vm-name }}
         
