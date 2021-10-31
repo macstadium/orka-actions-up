@@ -1,16 +1,63 @@
 name: 'orka-actions-up'
 description: 'spin up an orka actions runner'
-outputs:
-  vm-name:
-    description: "VM name"
-    value: ${{ steps.runner-up.outputs.vm-name }}
 runs:
   using: "composite"
   steps:
     - id: runner-up
       run: |
-        ${{ github.action_path }}/run.sh
-        export VM_NAME=$(echo $RANDOM | md5sum | head -c 20; echo;)
+        export VM_NAME=$(LC_ALL=C tr -dc a-z </dev/urandom | head -c 10)
         echo "::set-output name=vm-name::$(echo $VM_NAME)"
+        ${{ github.action_path }}/connect.sh
         python3 ${{ github.action_path }}/main.py
       shell: bash
+      env:
+        INPUT_ORKAUSER: ${{ inputs.orkaUser }}
+        INPUT_ORKAIP: ${{ inputs.orkaIP }}
+        INPUT_ORKAPASS: ${{ inputs.orkaPass }}
+        INPUT_ORKABASEIMAGE: ${{ inputs.orkaBaseImage }}
+        INPUT_GITHUBUSER: ${{ inputs.githubUser }}
+        INPUT_GITHUBREPONAME: ${{ inputs.githubRepoName }}
+        INPUT_GITHUBPAT: ${{ inputs.githubPat }}
+        VPN_PASSWORD: ${{ inputs.vpnPassword }}
+        VPN_USER: ${{ inputs.vpnUser }}
+        VPN_ADDRESS: ${{ inputs.vpnAddress }}
+        VPN_SERVER_CERT: ${{ inputs.vpnServerCert }}
+inputs:
+  orkaIP:
+    description: "Your Orka IP"
+    required: true
+  orkaUser:
+    description: "Your Orka username"
+    required: true
+  orkaPass:
+    description: "Your orka password"
+    required: true
+  orkaBaseImage:
+    description: "The Orka base image name"
+    required: true
+  githubUser:
+    description: "Your GitHub username"
+    required: true
+  githubPat:
+    description: "Your GitHub personal access token"
+    required: true
+  githubRepoName:
+    description: "Name of your repo"
+    required: true
+  vpnPassword:
+    description: "Your VPN password"
+    required: true
+  vpnUser:
+    description: "VPN username"
+    required: true
+  vpnAddress:
+    description: "VPN IP Address"
+    required: true
+  vpnServerCert:
+    description: "The server cert value for your VPN server"
+    required: true
+outputs:
+  vm-name:
+    description: "VM name"
+    value: ${{ steps.runner-up.outputs.vm-name }}
+    
