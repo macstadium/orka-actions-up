@@ -63,3 +63,14 @@ jobs:
         vpnServerCert: ${{ secrets.VPN_SERVER_CERT }}
         vmName: ${{ needs.job1.outputs.vm-name }}
 ```
+
+## job2 example output
+
+```
+Run sw_vers
+  sw_vers
+  shell: /bin/bash -e {0}
+ProductName:	macOS
+ProductVersion:	11.3
+BuildVersion:	20E232
+```
