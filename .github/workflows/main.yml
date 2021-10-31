@@ -32,7 +32,7 @@ jobs:
     - name: Job 2
       id: job2
       run: |
-        echo "sw_vers"
+        sw_vers
   job3:
     if: always()
     needs: [job1, job2]
