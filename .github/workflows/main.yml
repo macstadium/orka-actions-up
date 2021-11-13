@@ -16,7 +16,7 @@ jobs:
         orkaPass: ${{ secrets.ORKA_PASS }}
         orkaBaseImage: gha_bigsur_v3.img
         githubPat: ${{ secrets.GH_PAT }}
-        githubRepoName: ${{ env.GITHUB_REPOSITORY }}
+        githubRepoName: ${env:GITHUB_REPOSITORY}
         vpnUser: ${{ secrets.VPN_USER }}
         vpnPassword: ${{ secrets.VPN_PASSWORD }}
         vpnAddress: ${{ secrets.VPN_ADDRESS }}
