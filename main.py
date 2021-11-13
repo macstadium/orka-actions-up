@@ -17,9 +17,10 @@ class SpinUpOrkaVM:
 		self.orka_user = os.environ["INPUT_ORKAUSER"]
 		self.orka_pass = os.environ["INPUT_ORKAPASS"]
 		self.orka_base_image = os.environ["INPUT_ORKABASEIMAGE"]
-		self.github_user = os.environ["INPUT_GITHUBUSER"]
 		self.github_pat = os.environ["INPUT_GITHUBPAT"]
-		self.github_repo_name = os.environ["INPUT_GITHUBREPONAME"]
+		repo_and_user_name = os.environ["INPUT_GITHUBREPONAME"].split('/')
+		self.github_repo_name = repo_and_user_name[1]
+		self.github_user = repo_and_user_name[0]
 		self.gh_session = requests.Session()
 		self.gh_session.auth = (self.github_user, self.github_pat)
 
