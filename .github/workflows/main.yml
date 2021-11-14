@@ -11,12 +11,10 @@ jobs:
       id: job1
       uses: jeff-vincent/orka-actions-up@input_refactor
       with:
-        orkaIP: http://10.221.188.100
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
         orkaBaseImage: gha_bigsur_v3.img
         githubPat: ${{ secrets.GH_PAT }}
-        githubRepoName: ${env:GITHUB_REPOSITORY}
         vpnUser: ${{ secrets.VPN_USER }}
         vpnPassword: ${{ secrets.VPN_PASSWORD }}
         vpnAddress: ${{ secrets.VPN_ADDRESS }}
@@ -39,13 +37,11 @@ jobs:
     steps:
     - name: Job 3
       id: job3
-      uses: jeff-vincent/orka-actions-down@1.0.0
+      uses: jeff-vincent/orka-actions-down@input_refactor
       with:
-        orkaIP: http://10.221.188.100
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
         githubPat: ${{ secrets.GH_PAT }}
-        githubRepoName: ${{ env.GITHUB_REPOSITORY }}
         vpnUser: ${{ secrets.VPN_USER }}
         vpnPassword: ${{ secrets.VPN_PASSWORD }}
         vpnAddress: ${{ secrets.VPN_ADDRESS }}
