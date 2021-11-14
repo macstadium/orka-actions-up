@@ -3,11 +3,11 @@
 Run self-hosted, macOS workflows on MacStadium's Orka. 
 
 ## Overview
-This action is intended to be paired with [`jeff-vincent/orka-actions-down@v1.0.0`](https://github.com/marketplace/actions/orka-actions-down) in order to pass iOS and macOS CI/CD jobs to ephemeral, self-hosted runners in [MacStadium's Orka](https://orkadocs.macstadium.com). 
+This action is intended to be paired with [`jeff-vincent/orka-actions-down@v1.1.0`](https://github.com/marketplace/actions/orka-actions-down) in order to pass iOS and macOS CI/CD jobs to ephemeral, self-hosted runners in [MacStadium's Orka](https://orkadocs.macstadium.com). 
 
 orka-actions-up is responsible for spinning up a fresh macOS VM in Orka, which then registers itself as a self-hosted runner with the help of the agent resources housed and detailed in [`jeff-vincent/orka-actions-connect`](https://github.com/jeff-vincent/orka-actions-connect). 
 
-Finally, as shown in the example below, [`jeff-vincent/orka-actions-down@v1.0.0`](https://github.com/marketplace/actions/orka-actions-down), tears down the ephemeral macOS, self-hosted runner.
+Finally, as shown in the example below, [`jeff-vincent/orka-actions-down@v1.1.0`](https://github.com/marketplace/actions/orka-actions-down), tears down the ephemeral macOS, self-hosted runner.
 
 ## Example workflow
 
