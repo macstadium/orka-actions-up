@@ -5,21 +5,19 @@ import requests
 import string
 import time
 
-
 class SpinUpOrkaVM:
 	def __init__(self):
 		self.token = None
 		self.vm_name = os.environ["VM_NAME"]
-		self.node_name = None
-		self.actions_tag = None
 		orka_ip = '10.221.188.100'
 		self.orka_address = f"http://{orka_ip}"
-		self.orka_user = os.environ["INPUT_ORKAUSER"]
-		self.orka_pass = os.environ["INPUT_ORKAPASS"]
-		self.orka_base_image = os.environ["INPUT_ORKABASEIMAGE"]
-		self.github_pat = os.environ["INPUT_GITHUBPAT"]
+		self.orka_user = os.environ["INPUT_ORKA_USER"]
+		self.orka_pass = os.environ["INPUT_ORKA_PASS"]
+		self.orka_base_image = os.environ["INPUT_ORKA_BASE_IMAGE"]
+		self.core_count = os.environ["INPUT_CORE_COUNT"]
+		self.vcpu_count = os.environ["INPUT_VCPU_COUNT"]
+		self.github_pat = os.environ["INPUT_GITHUB_PAT"]
 		repo_and_user_name = os.environ["GITHUB_REPOSITORY"].split('/')
-		print(repo_and_user_name)
 		self.github_repo_name = repo_and_user_name[1]
 		self.github_user = repo_and_user_name[0]
 		self.gh_session = requests.Session()
@@ -29,7 +27,6 @@ class SpinUpOrkaVM:
 		data = {'email': self.orka_user, 'password': self.orka_pass}
 		result = requests.post(self.orka_address+'/token', data=data)
 		content = json.loads(result._content.decode('utf-8'))
-		print(content)
 		self.token = content['token']
 
 	def create_vm_config(self):
@@ -42,8 +39,8 @@ class SpinUpOrkaVM:
 			'orka_vm_name': self.vm_name,
 			'orka_base_image': self.orka_base_image,
 			'orka_image': self.vm_name,
-			'orka_cpu_core': 3,
-			'vcpu_count': 3
+			'orka_cpu_core': self.core_count,
+			'vcpu_count': self.vcpu_count
 			}
 		requests.post(orka_address, data=json.dumps(data), headers=headers)
         

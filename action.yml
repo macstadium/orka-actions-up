@@ -11,21 +11,18 @@ runs:
         python3 ${{ github.action_path }}/main.py
       shell: bash
       env:
-        INPUT_ORKAUSER: ${{ inputs.orkaUser }}
-        INPUT_ORKAIP: ${{ inputs.orkaIP }}
-        INPUT_ORKAPASS: ${{ inputs.orkaPass }}
-        INPUT_ORKABASEIMAGE: ${{ inputs.orkaBaseImage }}
-        INPUT_GITHUBUSER: ${{ inputs.githubUser }}
-        INPUT_GITHUBREPONAME: ${{ inputs.githubRepoName }}
-        INPUT_GITHUBPAT: ${{ inputs.githubPat }}
+        INPUT_ORKA_USER: ${{ inputs.orkaUser }}
+        INPUT_ORKA_PASS: ${{ inputs.orkaPass }}
+        INPUT_ORKA_BASE_IMAGE: ${{ inputs.orkaBaseImage }}
+        INPUT_GITHUB_PAT: ${{ inputs.githubPat }}
+        INPUT_VCPU_COUNT: ${{ inputs.vcpuCount }}
+        INPUT_CORE_COUNT: ${{ inputs.coreCount }}
         VPN_PASSWORD: ${{ inputs.vpnPassword }}
         VPN_USER: ${{ inputs.vpnUser }}
         VPN_ADDRESS: ${{ inputs.vpnAddress }}
         VPN_SERVER_CERT: ${{ inputs.vpnServerCert }}
+
 inputs:
-  orkaIP:
-    description: "Your Orka IP"
-    required: true
   orkaUser:
     description: "Your Orka username"
     required: true
@@ -35,14 +32,14 @@ inputs:
   orkaBaseImage:
     description: "The Orka base image name"
     required: true
-  githubUser:
-    description: "Your GitHub username"
+  vcpuCount:
+    description: "The number of vcpus for the agent"
+    required: true
+  coreCount:
+    description: "The number of cores for the agent"
     required: true
   githubPat:
     description: "Your GitHub personal access token"
-    required: true
-  githubRepoName:
-    description: "Name of your repo"
     required: true
   vpnPassword:
     description: "Your VPN password"
