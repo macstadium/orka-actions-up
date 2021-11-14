@@ -41,8 +41,8 @@ class SpinUpOrkaVM:
 			'orka_vm_name': self.vm_name,
 			'orka_base_image': self.orka_base_image,
 			'orka_image': self.vm_name,
-			'orka_cpu_core': self.core_count,
-			'vcpu_count': self.vcpu_count
+			'orka_cpu_core': int(self.core_count),
+			'vcpu_count': int(self.vcpu_count)
 			}
 		requests.post(orka_address, data=json.dumps(data), headers=headers)
         
