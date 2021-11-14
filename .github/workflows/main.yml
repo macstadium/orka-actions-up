@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   job1:
@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/orka-actions-up@main
+      uses: jeff-vincent/orka-actions-up@dev
       with:
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
@@ -19,6 +19,8 @@ jobs:
         vpnPassword: ${{ secrets.VPN_PASSWORD }}
         vpnAddress: ${{ secrets.VPN_ADDRESS }}
         vpnServerCert: ${{ secrets.VPN_SERVER_CERT }}
+        vcpuCount: 6
+        coreCount: 6
     outputs:
       vm-name: ${{ steps.job1.outputs.vm-name }}
          
