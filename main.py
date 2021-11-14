@@ -15,7 +15,9 @@ class SpinUpOrkaVM:
 		self.orka_pass = os.environ["INPUT_ORKA_PASS"]
 		self.orka_base_image = os.environ["INPUT_ORKA_BASE_IMAGE"]
 		self.core_count = os.environ["INPUT_CORE_COUNT"]
+		print(f"Core count: {self.core_count}")
 		self.vcpu_count = os.environ["INPUT_VCPU_COUNT"]
+		print(f"VCPU Count: {self.vcpu_count}")
 		self.github_pat = os.environ["INPUT_GITHUB_PAT"]
 		repo_and_user_name = os.environ["GITHUB_REPOSITORY"].split('/')
 		self.github_repo_name = repo_and_user_name[1]
