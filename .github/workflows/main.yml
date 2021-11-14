@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   job1:
@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/orka-actions-up@dev
+      uses: jeff-vincent/orka-actions-up@main
       with:
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
