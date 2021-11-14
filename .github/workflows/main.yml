@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - input_refactor
+      - main
 
 jobs:
   job1:
@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Job 1
       id: job1
-      uses: jeff-vincent/orka-actions-up@input_refactor
+      uses: jeff-vincent/orka-actions-up@main
       with:
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
@@ -37,7 +37,7 @@ jobs:
     steps:
     - name: Job 3
       id: job3
-      uses: jeff-vincent/orka-actions-down@input_refactor
+      uses: jeff-vincent/orka-actions-down@v1.1.0
       with:
         orkaUser: ${{ secrets.ORKA_USER }}
         orkaPass: ${{ secrets.ORKA_PASS }}
