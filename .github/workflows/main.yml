@@ -19,8 +19,8 @@ jobs:
         vpnPassword: ${{ secrets.VPN_PASSWORD }}
         vpnAddress: ${{ secrets.VPN_ADDRESS }}
         vpnServerCert: ${{ secrets.VPN_SERVER_CERT }}
-        vcpuCount: '6'
-        coreCount: '6'
+        vcpuCount: 6
+        coreCount: 6
     outputs:
       vm-name: ${{ steps.job1.outputs.vm-name }}
          
