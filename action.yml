@@ -15,6 +15,7 @@ runs:
         INPUT_ORKA_PASS: ${{ inputs.orkaPass }}
         INPUT_ORKA_BASE_IMAGE: ${{ inputs.orkaBaseImage }}
         INPUT_GITHUB_PAT: ${{ inputs.githubPat }}
+        INPUT_GITHUB_ORG: ${{ inputs.githubOrg }}
         INPUT_VCPU_COUNT: ${{ inputs.vcpuCount }}
         INPUT_CORE_COUNT: ${{ inputs.coreCount }}
         VPN_PASSWORD: ${{ inputs.vpnPassword }}
@@ -40,6 +41,9 @@ inputs:
     required: true
   githubPat:
     description: "Your GitHub personal access token"
+    required: true
+  githubOrg:
+    description: "Your org"
     required: true
   vpnPassword:
     description: "Your VPN password"
