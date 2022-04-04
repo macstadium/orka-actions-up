@@ -15,12 +15,11 @@ class SpinUpOrkaVM:
 		self.orka_pass = os.environ["INPUT_ORKA_PASS"]
 		self.orka_base_image = os.environ["INPUT_ORKA_BASE_IMAGE"]
 		self.core_count = os.environ["INPUT_CORE_COUNT"]
-		print(f"Core count: {self.core_count}")
 		self.vcpu_count = os.environ["INPUT_VCPU_COUNT"]
-		print(f"VCPU Count: {self.vcpu_count}")
 		self.github_pat = os.environ["INPUT_GITHUB_PAT"]
+		self.github_org = os.environ["INPUT_GITHUB_ORG"]
 		repo_and_user_name = os.environ["GITHUB_REPOSITORY"].split('/')
-		self.github_repo_name = repo_and_user_name[1]
+		# self.github_repo_name = repo_and_user_name[1]
 		self.github_user = repo_and_user_name[0]
 		self.gh_session = requests.Session()
 		self.gh_session.auth = (self.github_user, self.github_pat)
@@ -53,9 +52,8 @@ class SpinUpOrkaVM:
 			'orka_vm_name': self.vm_name, 
 			'vm_metadata': {
 				"items":[
-					{'key':'github_user', 'value':str(self.github_user)}, 
 					{'key':'github_pat', 'value':str(self.github_pat)},
-					{'key':'github_repo_name', 'value':str(self.github_repo_name)}
+					{'key':'github_org', 'value':str(self.github_org)}
 					]
 				}
 			}
@@ -73,7 +71,7 @@ class SpinUpOrkaVM:
 		requests.delete(url, headers=headers)
 
 	def check_runner_status(self):
-		url = f"https://api.github.com/repos/{self.github_user}/{self.github_repo_name}/actions/runners"
+		url = f"https://api.github.com/orgs/{self.github_org}/actions/runners"
 		result = self.gh_session.get(url)
 		content = json.loads(result._content.decode('utf-8'))
 		for item in content['runners']:
