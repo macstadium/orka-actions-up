@@ -74,6 +74,7 @@ class SpinUpOrkaVM:
 		url = f"https://api.github.com/orgs/{self.github_org}/actions/runners"
 		result = self.gh_session.get(url)
 		content = json.loads(result._content.decode('utf-8'))
+		print(content)
 		for item in content['runners']:
 			if self.vm_name in item['name']:
 				return True
