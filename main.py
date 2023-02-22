@@ -64,14 +64,6 @@ class SpinUpOrkaVM:
 		self.vm_ip = content['ip']
 		self.vm_ssh_port = content['ssh_port']
 
-	def revoke_orka_auth_token(self):
-		url = f"{self.orka_address}/token"
-		headers = {
-            	'Content-Type': 'application/json',
-            	'Authorization': f"Bearer {self.token}"
-            	}
-		requests.delete(url, headers=headers)
-
 	def check_runner_status(self):
 		url = f"https://api.github.com/repos/{self.github_user}/{self.github_repo_name}/actions/runners"
 		result = self.gh_session.get(url)
@@ -87,7 +79,6 @@ def main(spin_up):
 	spin_up.get_auth_token()
 	spin_up.create_vm_config()
 	spin_up.deploy_vm_config()
-	spin_up.revoke_orka_auth_token()
 	time.sleep(20)
 	spin_up.check_runner_status()
 	
