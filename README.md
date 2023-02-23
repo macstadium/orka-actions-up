@@ -1,3 +1,10 @@
+# Announcement - 2/22/2022
+
+This is **not** the official Github Actions Plugin provided by MacStadium. There is **no support** for this plugin. 
+
+[Official Plugin](https://orkadocs.macstadium.com/docs/github-actions)
+
+[Github](https://github.com/macstadium/orka-integrations/tree/master/GitHub)
 # orka-actions-up
 
 Run self-hosted, macOS workflows on MacStadium's Orka. 
